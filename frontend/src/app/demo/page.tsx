@@ -25,7 +25,7 @@ export default function DemoPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api";
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "https://namma-ai.onrender.com/api";
     fetch(`${API_BASE}/demo/steps`)
       .then((res) => res.json())
       .then((data) => setSteps(data))
@@ -37,7 +37,7 @@ export default function DemoPage() {
     setError(null);
     setCurrentStep(1);
 
-    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api";
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "https://namma-ai.onrender.com/api";
     try {
       // Simulate visual progression
       const interval = setInterval(() => {

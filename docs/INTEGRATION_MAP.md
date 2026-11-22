@@ -560,7 +560,7 @@ The platform uses SQLAlchemy ORM which connects to PostgreSQL (Supabase) via sta
 | `TWILIO_WEBHOOK_BASE_URL`| Twilio Callbacks | `backend/core/config.py` | Public domain or ngrok tunnel URL for incoming webhooks. |
 | `N8N_WEBHOOK_URL` | n8n Dispatcher | `backend/core/config.py` (Planned) | Outbound webhook URL to trigger n8n workflows. |
 | `N8N_WEBHOOK_SECRET` | n8n Middleware | `backend/core/config.py` (Planned) | Shared secret validating communication with n8n. |
-| `NEXT_PUBLIC_API_BASE_URL` | Next.js Frontend | `frontend/src/app/...` | Backend API base URL (`http://localhost:8000/api`). |
+| `NEXT_PUBLIC_API_BASE_URL` | Next.js Frontend | `frontend/src/app/...` | Backend API base URL (`https://namma-ai.onrender.com/api`). |
 
 ---
 

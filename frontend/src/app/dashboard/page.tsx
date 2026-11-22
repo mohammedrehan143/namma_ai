@@ -45,7 +45,7 @@ export default function DashboardPage() {
 
   const loadData = async () => {
     setLoading(true);
-    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api";
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "https://namma-ai.onrender.com/api";
     try {
       // 1. Load Stats
       const statsRes = await fetch(`${API_BASE}/dashboard/stats`);

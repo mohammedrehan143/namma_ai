@@ -97,6 +97,8 @@ python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 API Documentation will be live at: `http://localhost:8000/docs`
 
+> **Live Production Backend**: `https://namma-ai.onrender.com` (API: `https://namma-ai.onrender.com/api`, Swagger: `https://namma-ai.onrender.com/docs`, Health: `https://namma-ai.onrender.com/health`)
+
 ### 4.4 Frontend Setup
 
 ```bash

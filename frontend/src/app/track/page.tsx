@@ -19,7 +19,7 @@ function TrackContent() {
     setLoading(true);
     setError(null);
 
-    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api";
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "https://namma-ai.onrender.com/api";
     try {
       const res = await fetch(`${API_BASE}/complaints/${id.trim()}`);
       if (!res.ok) {
@@ -147,7 +147,7 @@ function TrackContent() {
                 {complaint.evidence.map((ev: any) => (
                   <div key={ev.id} className="border border-slate-200 rounded-xl overflow-hidden p-3 bg-slate-50">
                     <img
-                      src={`${process.env.NEXT_PUBLIC_API_BASE_URL?.replace('/api', '') || "http://localhost:8000"}${ev.media_url}`}
+                      src={`${process.env.NEXT_PUBLIC_API_BASE_URL?.replace('/api', '') || "https://namma-ai.onrender.com"}${ev.media_url}`}
                       alt="Complaint evidence"
                       className="w-full h-44 object-cover rounded-lg bg-slate-200 mb-2"
                       onError={(e) => {

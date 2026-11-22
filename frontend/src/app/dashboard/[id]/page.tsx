@@ -37,7 +37,7 @@ export default function ComplaintDetailPage() {
 
   const fetchDetail = async () => {
     setLoading(true);
-    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api";
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "https://namma-ai.onrender.com/api";
     try {
       const res = await fetch(`${API_BASE}/complaints/${id}`);
       if (!res.ok) throw new Error("Grievance case not found");
@@ -57,7 +57,7 @@ export default function ComplaintDetailPage() {
   // Handle Officer Status Progression (e.g. Accept -> IN_PROGRESS)
   const handleUpdateStatus = async (newStatus: string) => {
     setActionLoading(true);
-    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api";
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "https://namma-ai.onrender.com/api";
     try {
       const res = await fetch(`${API_BASE}/complaints/${id}/assign`, {
         method: "POST",
@@ -81,7 +81,7 @@ export default function ComplaintDetailPage() {
   const handleResolveSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setActionLoading(true);
-    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api";
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "https://namma-ai.onrender.com/api";
     try {
       const formData = new FormData();
       formData.append("officer_notes", officerNotes);
@@ -231,7 +231,7 @@ export default function ComplaintDetailPage() {
                 {complaint.evidence.map((ev: any) => (
                   <div key={ev.id} className="border border-slate-200 rounded-xl overflow-hidden p-3 bg-slate-50">
                     <img
-                      src={`${process.env.NEXT_PUBLIC_API_BASE_URL?.replace('/api', '') || "http://localhost:8000"}${ev.media_url}`}
+                      src={`${process.env.NEXT_PUBLIC_API_BASE_URL?.replace('/api', '') || "https://namma-ai.onrender.com"}${ev.media_url}`}
                       alt="Complaint evidence"
                       className="w-full h-48 object-cover rounded-lg bg-slate-200 mb-2"
                       onError={(e) => {

@@ -1,6 +1,6 @@
 # Namma AI — API Specification
 
-Base URL: `http://localhost:8000/api`
+Base URL: `https://namma-ai.onrender.com/api` (Local Dev: `http://localhost:8000/api`)
 
 ---
 

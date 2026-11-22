@@ -41,7 +41,7 @@ You can deploy the backend using either **Render Blueprints (1-Click)** or **Man
    - **Start Command**: `uvicorn backend.main:app --host 0.0.0.0 --port $PORT`
    - **Health Check Path**: `/health`
 6. Click **"Apply"**.
-7. Once deployed, copy your backend URL (e.g. `https://namma-ai-backend.onrender.com`).
+7. Once deployed, copy your backend URL (`https://namma-ai.onrender.com`).
 
 ### Method B: Manual Web Service Setup on Render
 1. In Render Dashboard, click **"New"** > **"Web Service"**.
@@ -106,10 +106,10 @@ When prompted for environment variables, provide `NEXT_PUBLIC_API_BASE_URL=https
 
 ## 4. Connecting Frontend & Backend
 
-1. **Copy Render URL**: Get your live backend URL from Render (e.g. `https://namma-ai-backend.onrender.com`).
+1. **Copy Render URL**: Get your live backend URL from Render (`https://namma-ai.onrender.com`).
 2. **Set Frontend API Base**: In Vercel Project Settings > **Environment Variables**:
    ```
-   NEXT_PUBLIC_API_BASE_URL=https://namma-ai-backend.onrender.com/api
+   NEXT_PUBLIC_API_BASE_URL=https://namma-ai.onrender.com/api
    ```
    *(Trigger a Redeploy in Vercel to pick up new env vars).*
 3. **Allow CORS on Render**: Ensure Render's `CORS_ORIGIN_REGEX` is set to `https://.*\.vercel\.app` (default in `render.yaml`) so Vercel can seamlessly make API requests.
@@ -121,7 +121,7 @@ When prompted for environment variables, provide `NEXT_PUBLIC_API_BASE_URL=https
 Once deployed, verify the system:
 
 1. **Backend Health Check**:
-   Visit `https://<your-render-backend-url>/health` in browser:
+   Visit `https://namma-ai.onrender.com/health` in browser:
    ```json
    {
      "status": "healthy",
@@ -132,7 +132,7 @@ Once deployed, verify the system:
    }
    ```
 2. **Interactive API Documentation**:
-   Visit `https://<your-render-backend-url>/docs` to view Swagger UI.
+   Visit `https://namma-ai.onrender.com/docs` to view Swagger UI.
 3. **Frontend Dashboard**:
    Visit `https://<your-vercel-domain>.vercel.app/dashboard` to verify live stats and map markers.
 4. **Submit a Test Complaint**:

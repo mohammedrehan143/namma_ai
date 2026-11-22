@@ -22,7 +22,7 @@ export default function Home() {
   const [stats, setStats] = useState<any>({ total: 12, open: 4, resolved: 7 });
 
   useEffect(() => {
-    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api";
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "https://namma-ai.onrender.com/api";
     const BASE_HOST = API_BASE.replace(/\/api\/?$/, "");
 
     fetch(`${BASE_HOST}/health`)
