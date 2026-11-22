@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # -------------------------------------------------------------
+  # 1. Faster-Whisper STT Server (Local CTranslate2 Whisper)
+  # -------------------------------------------------------------
+  faster-whisper:
+    image: fedirz/faster-whisper-server:latest-cpu
+    container_name: namma-faster-whisper
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - WHISPER_MODEL=Systran/faster-whisper-base.en
+      - WHISPER_DEVICE=cpu
+      - WHISPER_COMPUTE_TYPE=int8
+    volumes:
+      - whisper_cache:/root/.cache/huggingface
+
+  # -------------------------------------------------------------
+  # 2. Piper Neural Text-to-Speech Engine
+  # -------------------------------------------------------------
+  piper-tts:
+    image: rhasspy/wyoming-piper:latest
+    container_name: namma-piper-tts
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    command: ["--voice", "en_US-lessac-medium"]
+    volumes:
+      - piper_data:/data
+
+  # -------------------------------------------------------------
+  # 3. n8n Engine (Strictly for Post-Call Asynchronous WhatsApp)
+  # -------------------------------------------------------------
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: namma-n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=127.0.0.1
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - WEBHOOK_URL=http://127.0.0.1:5678/
+      - GENERIC_TIMEZONE=Asia/Kolkata
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+volumes:
+  whisper_cache:
+  piper_data:
+  n8n_data:

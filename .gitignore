@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+*/node_modules/
+frontend/node_modules/
+
+# Next.js build output
+.next/
+*/.next/
+frontend/.next/
+out/
+*/out/
+
+# Python & compiled files
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/
+backend/**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+*/.pytest_cache/
+
+# Databases & local persistent files
+*.db
+*.sqlite
+*.sqlite3
+gitpulse_dev.db
+namma_ai.db
+uploads/
+*/uploads/
+
+# Environment files
+.env
+.env*.local
+!.env.example
+!frontend/.env.example
+
+# IDE & OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
