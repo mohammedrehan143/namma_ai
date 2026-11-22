@@ -62,3 +62,26 @@ def verify_access_token(token: str) -> dict:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Session expired. Please log in again.")
     except jwt.InvalidTokenError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid authentication credentials.")
+
+import time
+from collections import defaultdict
+
+class InMemoryRateLimiter:
+    """Sliding-window rate limiter per client key (IP or phone number)."""
+    def __init__(self, max_requests: int = 30, window_seconds: int = 60):
+        self.max_requests = max_requests
+        self.window_seconds = window_seconds
+        self.history = defaultdict(list)
+
+    def is_allowed(self, client_key: str) -> bool:
+        now = time.time()
+        window_start = now - self.window_seconds
+        # Evict old timestamps
+        self.history[client_key] = [t for t in self.history[client_key] if t > window_start]
+        if len(self.history[client_key]) >= self.max_requests:
+            return False
+        self.history[client_key].append(now)
+        return True
+
+submission_rate_limiter = InMemoryRateLimiter(max_requests=30, window_seconds=60)
+

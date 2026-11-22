@@ -1,4 +1,14 @@
 import os
+import sys
+from pathlib import Path
+
+# Add project root and backend dir to sys.path so imports work regardless of working directory
+_BACKEND_DIR = Path(__file__).resolve().parent
+_PROJECT_ROOT = _BACKEND_DIR.parent
+for _p in [str(_PROJECT_ROOT), str(_BACKEND_DIR)]:
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
+
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -62,6 +72,16 @@ app.add_exception_handler(Exception, generic_exception_handler)
 
 # Mount local uploads directory for static media retrieval
 app.mount("/uploads", StaticFiles(directory=settings.STORAGE_LOCAL_DIR), name="uploads")
+
+@app.get("/")
+def root():
+    return {
+        "status": "online",
+        "app_name": "Namma AI API",
+        "version": "1.0.0",
+        "docs": "/docs",
+        "health": "/health"
+    }
 
 # Include Core Routers
 app.include_router(health_router)

@@ -14,6 +14,10 @@ class Settings(BaseSettings):
     # CORS
     CORS_ORIGINS: str = Field(default="http://localhost:3000,http://127.0.0.1:3000,http://localhost:8000")
     CORS_ORIGIN_REGEX: str = Field(default=r"https://.*\.vercel\.app")
+
+    # Integrations & Admin Security
+    TELEGRAM_INGESTION_SECRET: str = Field(default="namma-telegram-n8n-secret-2026")
+    ADMIN_API_KEY: str = Field(default="namma-admin-secret-key-2026")
     
     # Database
     DATABASE_URL: str = Field(default="sqlite:///./namma_ai.db")
